@@ -6,20 +6,21 @@
         <p id="test"></p>
         <script>
             var latlon = document.getElementById("test");
+			// Checks to see if Geolocation is supported by the browser
             function getLocation() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition, showError);
+                    navigator.geolocation.getCurrentPosition(showPosition, showError); // getCurrentPosition method is run
                 } else {
-                    latlon.innerHTML = "Geolocation is not supported by this browser.";
+                    latlon.innerHTML = "Geolocation is not supported by this browser."; // Shows error message if it is not supported
                 }
             }
             function showPosition(position) {
-                latlon.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                latlon.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; // Displays lattitude and longitude if successful 
             }
             function showError(error) {
-                switch (error.code) {
+                switch (error.code) { 
                     case error.PERMISSION_DENIED:
-                        latlon.innerHTML = "User denied the request for Geolocation.";
+                        latlon.innerHTML = "User denied the request for Geolocation."; // This and every other error function shows any errors that may have occured
                         break;
                     case error.POSITION_UNAVAILABLE:
                         latlon.innerHTML = "Location information is unavailable.";
